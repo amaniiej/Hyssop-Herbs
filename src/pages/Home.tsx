@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import About from "../components/About";
+import About from "../components/Quote";
 import Products from "../components/Products";
 import Story from "../components/Story";
 import Reviews from "../components/Reviews";
+import Process from "../components/Process";
+import CTA from "../components/CTA";
 import Contact from "../components/Contact";
 import Footer from "../components/Footer";
 
@@ -35,8 +37,10 @@ useEffect(() => {
       
       <div id ="about" className="fade-in"><About /></div>
       <div id="products" className="fade-in"><Products /></div>
+      <div id="process" className="fade-in"><Process /></div>
       <div id="story" className="fade-in"><Story /></div>
       <div id="reviews" className="fade-in"><Reviews /></div>
+      <div id="CTA" className="fade-in"><CTA /></div>
       <div id="contact" className="fade-in"><Contact /></div>
 
       <Footer />
