@@ -15,8 +15,8 @@ export default function Hero() {
       className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#0b1f1a]"
     >
       {/* Background Decorative Glows */}
-      <div className="absolute w-150 h-150 bg-green-500/10 blur-[120px] rounded-full -top-48 -left-24" />
-      <div className="absolute w-100 h-100 bg-green-900/20 blur-[100px] rounded-full bottom-0 right-0" />
+      <div className="absolute w-[600px] h-[600px] bg-green-500/10 blur-[120px] rounded-full -top-48 -left-24" />
+      <div className="absolute w-[400px] h-[400px] bg-green-900/20 blur-[100px] rounded-full bottom-0 right-0" />
 
       <div className="container mx-auto px-6 md:px-12 z-10">
         <div className="flex flex-col md:flex-row items-center gap-12">
@@ -27,7 +27,7 @@ export default function Hero() {
               Premium Herbal Solutions
             </p>
             
-            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 font-serif">
+            <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6 font-serif text-white">
               Hyssop Herbs <br />
               <span className="text-green-500">& Wellness</span>
             </h1>
@@ -37,32 +37,58 @@ export default function Hero() {
               remedies designed to restore your body's natural balance.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <a href="/shop">
-                <button className="bg-green-500 hover:bg-green-600 text-white px-10 py-4 rounded-full font-bold text-lg shadow-lg shadow-green-900/20 transition-all">
-                  Shop Catalog
+            {/* ─── UIVERSE INSPIRED BUTTONS ─── */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center">
+              
+              {/* SHOP NOW BUTTON (Emerald Theme) */}
+              <a href="/shop" className="relative group cursor-pointer no-underline">
+                <button className="relative px-10 py-4 bg-transparent border-none text-white font-bold text-sm uppercase tracking-widest cursor-pointer z-10 transition-transform active:scale-95">
+                  Shop Now
+                  {/* Base Layer */}
+                  <div className="absolute inset-0 -z-10 rounded-full border border-white/10 bg-green-500/20 shadow-[inset_0_0_12px_rgba(74,222,128,0.4)] transition-all duration-300 group-hover:bg-green-500/40 group-hover:shadow-[0_0_20px_rgba(34,197,94,0.3)]" />
+                  {/* Glowing Border Layer */}
+                  <div className="absolute inset-0 -z-10 rounded-full p-[1px]" 
+                    style={{
+                      background: 'linear-gradient(180deg, rgba(134,239,172,0.4) 0%, rgba(134,239,172,0) 100%)',
+                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                      WebkitMaskComposite: 'xor'
+                    }} 
+                  />
                 </button>
               </a>
-              <a href="/about">
-                <button className="border border-green-500/30 hover:bg-green-500/10 px-10 py-4 rounded-full font-bold text-lg transition-all">
-                  Our Story
+
+              {/* BOOK CALL BUTTON (Amber Theme) */}
+              <a href="/contact" className="relative group cursor-pointer no-underline">
+                <button className="relative px-10 py-4 bg-transparent border-none text-white font-bold text-sm uppercase tracking-widest cursor-pointer z-10 transition-transform active:scale-95">
+                  Book A Call
+                  {/* Base Layer */}
+                  <div className="absolute inset-0 -z-10 rounded-full border border-white/10 bg-amber-500/10 shadow-[inset_0_0_12px_rgba(251,191,36,0.3)] transition-all duration-300 group-hover:bg-amber-500/30 group-hover:shadow-[0_0_20px_rgba(251,191,36,0.2)]" />
+                  {/* Glowing Border Layer */}
+                  <div className="absolute inset-0 -z-10 rounded-full p-[1px]" 
+                    style={{
+                      background: 'linear-gradient(180deg, rgba(251,191,36,0.4) 0%, rgba(251,191,36,0) 100%)',
+                      WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                      WebkitMaskComposite: 'xor'
+                    }} 
+                  />
                 </button>
               </a>
+
             </div>
 
             {/* Trust Badges */}
             <div className="mt-12 flex flex-wrap gap-6 justify-center md:justify-start opacity-70">
               <div className="flex items-center gap-2">
                 <span className="text-green-400">✔</span>
-                <span className="text-xs uppercase tracking-widest">Fast Shipping</span>
+                <span className="text-xs uppercase tracking-widest text-white">100% Organic</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-green-400">✔</span>
-                <span className="text-xs uppercase tracking-widest">Secure Payment</span>
+                <span className="text-xs uppercase tracking-widest text-white">Fast Shipping</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-green-400">✔</span>
-                <span className="text-xs uppercase tracking-widest">Delivered with Care</span>
+                <span className="text-xs uppercase tracking-widest text-white">Delivered with Care</span>
               </div>
             </div>
           </div>
@@ -70,24 +96,20 @@ export default function Hero() {
           {/* RIGHT SIDE: Image */}
           <div className="flex-1 relative">
             <div 
-              className="relative z-10 w-full max-w-lg mx-auto"
-              style={{ transform: `translateY(${offset * -0.05}px)` }} // Subtle parallax
+              className="relative z-10 w-full max-w-lg mx-auto scale-90"
+              style={{ transform: `translateY(${offset * -0.05}px)` }}
             >
-              {/* Main Image */}
               <img
                 src="/images/hero-img.jpeg" 
                 alt="Hyssop Herbal Products"
                 className="rounded-2xl shadow-2xl border border-white/5 object-cover w-full h-125"
               />
               
-              {/* Floating Decorative Card */}
               <div className="absolute -bottom-6 -left-6 bg-[#0f3d2e]/90 backdrop-blur-md p-4 rounded-xl border border-green-500/20 shadow-xl hidden md:block">
                 <p className="text-green-400 font-bold text-sm">Customer Choice</p>
                 <p className="text-white text-xs">Pure Hyssop Extract</p>
               </div>
             </div>
-            
-            {/* Background Circle behind image */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-green-500/5 rounded-full" />
           </div>
 
