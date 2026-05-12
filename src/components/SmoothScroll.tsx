@@ -3,19 +3,14 @@ import Lenis from "lenis";
 
 export default function SmoothScroll() {
   useEffect(() => {
-    // Initialize Lenis
+    // Initialize Lenis with the correct modern API properties
     const lenis = new Lenis({
-      duration: 1.5, // How long the "glide" lasts
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Physical easing function
-      direction: "vertical",
-      gestureDirection: "vertical",
+      duration: 1.2,
+      lerp: 0.1, // This is the secret to the "buttery" feel
       smoothWheel: true,
-      wheelMultiplier: 1, // Sensitivity
-      touchMultiplier: 2,
       infinite: false,
     });
 
-    // Synchronize Lenis scrolling with the browser's requestAnimationFrame
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -23,11 +18,10 @@ export default function SmoothScroll() {
 
     requestAnimationFrame(raf);
 
-    // Cleanup
     return () => {
       lenis.destroy();
     };
   }, []);
 
-  return null; // This component just runs the logic
+  return null;
 }

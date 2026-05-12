@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-
+import {FaChevronLeft, FaChevronRight } from "react-icons/fa";
 interface Product {
   id: number;
   title: string;
@@ -109,7 +109,7 @@ export default function Shop() {
             onClick={() => paginate(currentPage - 1)}
             className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-green-500 hover:text-[#0b1f1a] transition-all disabled:opacity-20 cursor-pointer"
           >
-       
+            <FaChevronLeft className="text-xs" />
           </button>
           
           <div className="flex gap-2">
@@ -130,7 +130,7 @@ export default function Shop() {
             onClick={() => paginate(currentPage + 1)}
             className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-green-500 hover:text-[#0b1f1a] transition-all disabled:opacity-20 cursor-pointer"
           >
-           
+            <FaChevronRight className="text-xs" />
           </button>
         </div>
 
