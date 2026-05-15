@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { useSearchParams } from "react-router-dom";
 import { createPortal } from "react-dom";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -76,15 +77,29 @@ export default function Shop() {
 
   const isSearching = query.trim() !== "";
 
-  // ── Pagination — operates on filtered list ──
-  const [currentPage, setCurrentPage] = useState(1);
+  // ── Pagination — page is stored in the URL (?page=2) so refresh preserves position ──
+  const [searchParams, setSearchParams] = useSearchParams();
   const productsPerPage = 12;
 
-  // Reset to page 1 whenever the search query changes
-  useEffect(() => { setCurrentPage(1); }, [query]);
+  // Read page from URL on mount; default to 1 if missing or invalid
+  const pageFromUrl = parseInt(searchParams.get("page") ?? "1", 10);
+  const currentPage = isNaN(pageFromUrl) || pageFromUrl < 1 ? 1 : pageFromUrl;
 
-  const totalPages     = Math.ceil(filtered.length / productsPerPage);
-  const indexOfFirst   = (currentPage - 1) * productsPerPage;
+  // Setter — writes to URL instead of local state
+  const setCurrentPage = (page: number) => {
+    setSearchParams(prev => {
+      const next = new URLSearchParams(prev);
+      if (page === 1) next.delete("page"); // keep URL clean on page 1
+      else next.set("page", String(page));
+      return next;
+    }, { replace: false }); // replace: false so browser back button works
+  };
+
+  const totalPages = Math.ceil(filtered.length / productsPerPage);
+  // If the query narrows results so the current page no longer exists, clamp to 1.
+  // Derived — no setState inside an effect needed.
+  const safePage       = currentPage > totalPages ? 1 : currentPage;
+  const indexOfFirst   = (safePage - 1) * productsPerPage;
   const currentProducts = filtered.slice(indexOfFirst, indexOfFirst + productsPerPage);
 
   const paginate = (page: number) => {
@@ -108,7 +123,7 @@ export default function Shop() {
     try {
       const saved = localStorage.getItem("hyssop_cart");
       return saved ? JSON.parse(saved) : [];
-    } catch { return []; }
+    } catch (_e) { return []; }
   });
   const [cartOpen, setCartOpen] = useState(false);
 
@@ -200,7 +215,7 @@ export default function Shop() {
     setForm(emptyForm);
     setFormError("");
   };
-  const openDirectOrder = (_product: Product) => {
+  const openDirectOrder = () => {
     setCartSource("direct");
     setModalStep("order");
   };
@@ -424,7 +439,7 @@ export default function Shop() {
                   + Add to Cart
                 </button>
                 <button
-                  onClick={() => openDirectOrder(selectedProduct)}
+                  onClick={() => openDirectOrder()}
                   className="flex-1 py-3.5 rounded-2xl text-white font-black text-[10px] uppercase tracking-[0.2em] cursor-pointer transition-all"
                   style={{ background: "rgba(34,197,94,0.22)", border: "1px solid rgba(52,211,153,0.3)", boxShadow: "inset 0 0 12px rgba(74,222,128,0.2)" }}
                   onMouseEnter={e => (e.currentTarget.style.background = "rgba(34,197,94,0.38)")}
@@ -594,7 +609,7 @@ export default function Shop() {
                 type="text"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                placeholder='Search by name or benefit... (e.g. "immune", "sleep")'
+                placeholder="Search by name or description... "
                 className="flex-1 bg-transparent text-sm text-white placeholder-white/25 focus:outline-none"
               />
               {query && (
