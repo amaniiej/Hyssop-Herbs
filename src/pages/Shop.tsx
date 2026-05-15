@@ -328,7 +328,7 @@ export default function Shop() {
               {cartSource === "cart" ? "Place Your Order" : `Order: ${selectedProduct?.title}`}
             </h3>
             {cartSource === "cart" && (
-              <div className="mt-2 mb-3 rounded-xl bg-white/[0.03] border border-white/10 px-4 py-3">
+              <div className="mt-2 mb-3 rounded-xl bg-white/3 border border-white/10 px-4 py-3">
                 {cart.map(i => (
                   <div key={i.id} className="flex justify-between text-xs text-gray-400 py-0.5">
                     <span>{i.title} × {i.quantity}</span>
@@ -367,7 +367,7 @@ export default function Shop() {
             {formError && <p className="text-red-400/80 text-xs">{formError}</p>}
             <div className="flex gap-3 mt-1">
               <button onClick={() => setModalStep("info")}
-                className="px-5 py-3 rounded-xl border border-white/10 bg-white/[0.03] text-white/50 text-xs uppercase tracking-widest hover:bg-white/[0.07] transition-all cursor-pointer">
+                className="px-5 py-3 rounded-xl border border-white/10 bg-white/3 text-white/50 text-xs uppercase tracking-widest hover:bg-white/[0.07] transition-all cursor-pointer">
                 ← Back
               </button>
               <button onClick={handleSubmit} disabled={submitting}
@@ -387,7 +387,7 @@ export default function Shop() {
   // ─────────────────────────────────────────────────────────
   const modal = selectedProduct ? createPortal(
     <div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-xl animate-fadeIn px-4"
+      className="fixed inset-0 z-9999 flex items-center justify-center bg-black/80 backdrop-blur-xl animate-fadeIn px-4"
       onClick={closeModal}
     >
       <div
@@ -403,7 +403,7 @@ export default function Shop() {
         {/* Left — product image */}
         <div className="md:w-5/12 h-48 md:h-auto relative shrink-0">
           <img src={selectedProduct.image} className="w-full h-full object-cover" alt={selectedProduct.title} />
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#061411]/60" />
+          <div className="absolute inset-0 bg-linear-to-r from-transparent to-[#061411]/60" />
           <div className="absolute bottom-4 left-4 flex gap-2">
             <div className={`h-1 w-6 rounded-full transition-all duration-500 ${modalStep === "info" ? "bg-green-400" : "bg-white/20"}`} />
             <div className={`h-1 w-6 rounded-full transition-all duration-500 ${modalStep === "order" ? "bg-green-400" : "bg-white/20"}`} />
@@ -472,11 +472,11 @@ export default function Shop() {
   const cartDrawer = typeof document === "undefined" ? null : createPortal(
     <>
       {cartOpen && (
-        <div className="fixed inset-0 z-[9998] bg-black/60 backdrop-blur-sm"
+        <div className="fixed inset-0 z-9998 bg-black/60 backdrop-blur-sm"
           onClick={() => setCartOpen(false)} />
       )}
       <div
-        className="fixed top-0 right-0 bottom-0 z-[9999] w-full max-w-sm flex flex-col transition-transform duration-500"
+        className="fixed top-0 right-0 bottom-0 z-9999 w-full max-w-sm flex flex-col transition-transform duration-500"
         style={{
           transform: cartOpen ? "translateX(0)" : "translateX(100%)",
           background: "rgba(6,20,17,0.92)",
@@ -485,7 +485,7 @@ export default function Shop() {
           boxShadow: "-20px 0 60px rgba(0,0,0,0.5)",
         }}
       >
-        <div className="flex items-center justify-between px-6 py-5 border-b border-white/[0.08]">
+        <div className="flex items-center justify-between px-6 py-5 border-b border-white/8">
           <div className="flex items-center gap-3">
             <FaShoppingBag className="text-green-400 text-sm" />
             <span className="text-white font-black text-sm uppercase tracking-[0.2em]">Your Cart</span>
@@ -515,7 +515,7 @@ export default function Shop() {
             </div>
           ) : (
             cart.map(item => (
-              <div key={item.id} className="flex gap-3 p-3 rounded-2xl border border-white/[0.08] bg-white/[0.02]">
+              <div key={item.id} className="flex gap-3 p-3 rounded-2xl border border-white/8 bg-white/2">
                 <img src={item.image} className="w-14 h-14 rounded-xl object-cover shrink-0" alt={item.title} />
                 <div className="flex-1 min-w-0">
                   <p className="text-white text-sm font-serif truncate">{item.title}</p>
@@ -542,7 +542,7 @@ export default function Shop() {
         </div>
 
         {cart.length > 0 && (
-          <div className="px-6 py-5 border-t border-white/[0.08]">
+          <div className="px-6 py-5 border-t border-white/8">
             <div className="flex justify-between text-sm mb-4">
               <span className="text-gray-400">Total</span>
               <span className="text-white font-bold">${cartTotal.toFixed(2)}</span>
@@ -571,8 +571,8 @@ export default function Shop() {
 
       {/* Background */}
       <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-[-10%] right-[-10%] w-[800px] h-[800px] bg-emerald-600/10 blur-[150px] rounded-full animate-pulse" />
-        <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] bg-amber-500/5 blur-[130px] rounded-full" />
+        <div className="absolute top-[-10%] right-[-10%] w-200 h-200 bg-emerald-600/10 blur-[150px] rounded-full animate-pulse" />
+        <div className="absolute bottom-[-10%] left-[-10%] w-150 h-150 bg-amber-500/5 blur-[130px] rounded-full" />
         <div className="absolute inset-0 opacity-[0.05]">
           {[5, 25, 45, 65, 85].map(t => [10, 50, 90].map(l => (
             <img key={`${t}-${l}`} src="/images/hysspo-bg-preview.png" className="absolute w-48" aria-hidden="true"
@@ -637,20 +637,20 @@ export default function Shop() {
         {currentProducts.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center">
             {currentProducts.map(product => (
-              <div key={product.id} className="group w-full max-w-[280px] [perspective:1200px]">
+              <div key={product.id} className="group w-full max-w-70 perspective-distant">
                 <div
-                  className="relative h-[300px] rounded-[35px] overflow-hidden cursor-pointer transition-all duration-700 ease-out transform-gpu [transform-style:preserve-3d] [transform:rotateY(-8deg)] group-hover:[transform:rotateY(10deg)_rotateX(2deg)] group-hover:shadow-[rgba(34,197,94,0.15)_-15px_30px_40px_0px]"
+                  className="relative h-75 rounded-[35px] overflow-hidden cursor-pointer transition-all duration-700 ease-out transform-gpu transform-3d group-hover:transform-[rotateY(10deg)_rotateX(2deg)] group-hover:shadow-[rgba(34,197,94,0.15)_-15px_30px_40px_0px]"
                   style={{ background: "linear-gradient(135deg,rgba(255,255,255,0.03),rgba(255,255,255,0.01))", border: "1px solid rgba(255,255,255,0.08)" }}
                 >
-                  <div className="absolute inset-[8px] rounded-[28px] bg-white/[0.02] backdrop-blur-[3px] overflow-hidden [transform:translateZ(25px)]">
+                  <div className="absolute inset-2 rounded-[28px] bg-white/2 backdrop-blur-[3px] overflow-hidden transform-[translateZ(25px)]">
                     <div className="relative h-[55%] w-full overflow-hidden">
                       <img
                         src={product.image}
-                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 grayscale-[20%] group-hover:grayscale-0"
+                        className="w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 grayscale-20 group-hover:grayscale-0"
                         alt={product.title}
                         onError={e => { (e.currentTarget as HTMLImageElement).src = "/images/hysspo-bg-preview.png"; }}
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0b1f1a] to-transparent opacity-40" />
+                      <div className="absolute inset-0 bg-linear-to-t from-[#0b1f1a] to-transparent opacity-40" />
                     </div>
                     <div className="px-5 py-4">
                       <h3 className="text-lg font-serif text-white mb-0.5 truncate">{product.title}</h3>
@@ -712,7 +712,7 @@ export default function Shop() {
 
       {/* Floating cart button */}
       <button onClick={() => setCartOpen(true)}
-        className="fixed bottom-8 right-8 z-[9990] w-14 h-14 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110"
+        className="fixed bottom-8 right-8 z-9990 w-14 h-14 rounded-full flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110"
         style={{ background: "rgba(34,197,94,0.2)", border: "1px solid rgba(52,211,153,0.35)", boxShadow: "0 0 30px rgba(34,197,94,0.2), inset 0 1px 0 rgba(255,255,255,0.1)", backdropFilter: "blur(12px)" }}
       >
         <FaShoppingBag className="text-green-400 text-lg" />
