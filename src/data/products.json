@@ -1,0 +1,282 @@
+[
+  {
+    "id": 1,
+    "image": "/images/Papaya Leaf.jpg",
+    "title": "Papaya Leaf",
+    "description": "Hand-selected papaye leaves for vascular restoration and natural healing.",
+    "price": "$12.00"
+  },
+  {
+    "id": 2,
+    "image": "/images/Mhyrr.jpg",
+    "title": "Mhyrr",
+    "description": "Calming passion for the endocrine system support.",
+    "price": "$15.00"
+  },
+  {
+    "id": 3,
+    "image": "/images/Moringa Leaf.jpg",
+    "title": "Moringa Leaf.jpg",
+    "description": "Sun-dried moringa petals for skin rejuvenation and anti-inflammatory support.",
+    "price": "$14.00"
+  },
+  {
+    "id": 4,
+    "image": "/images/echinacea-root.jpg",
+    "title": "Echinacea Root",
+    "description": "Organic echinacea root to boost immune system and fight colds.",
+    "price": "$16.00"
+  },
+  {
+    "id": 5,
+    "image": "/images/valerian-root.jpg",
+    "title": "Valerian Root",
+    "description": "Natural valerian root for deep relaxation and restful sleep.",
+    "price": "$13.00"
+  },
+  {
+    "id": 6,
+    "image": "/images/ginger-root.jpg",
+    "title": "Ginger Root",
+    "description": "Fresh-dried ginger root for digestion and inflammation relief.",
+    "price": "$10.00"
+  },
+  {
+    "id": 7,
+    "image": "/images/turmeric-root.jpg",
+    "title": "Turmeric Root",
+    "description": "Golden turmeric root with curcumin for joint health and vitality.",
+    "price": "$11.00"
+  },
+  {
+    "id": 8,
+    "image": "/images/peppermint-leaves.jpg",
+    "title": "Peppermint Leaves",
+    "description": "Cooling peppermint leaves for digestive comfort and mental clarity.",
+    "price": "$9.00"
+  },
+  {
+    "id": 9,
+    "image": "/images/chamomile-flowers.jpg",
+    "title": "Chamomile Flowers",
+    "description": "Gentle chamomile flowers for stress relief and peaceful sleep.",
+    "price": "$12.00"
+  },
+  {
+    "id": 10,
+    "image": "/images/lemongrass.jpg",
+    "title": "Lemongrass",
+    "description": "Aromatic lemongrass for detoxification and immune support.",
+    "price": "$10.00"
+  },
+  {
+    "id": 11,
+    "image": "/images/sage-leaves.jpg",
+    "title": "Sage Leaves",
+    "description": "Wise sage leaves for memory enhancement and throat health.",
+    "price": "$13.00"
+  },
+  {
+    "id": 12,
+    "image": "/images/rosemary.jpg",
+    "title": "Rosemary",
+    "description": "Revitalizing rosemary for circulation and cognitive function.",
+    "price": "$11.00"
+  },
+  {
+    "id": 13,
+    "image": "/images/lavender-flowers.jpg",
+    "title": "Lavender Flowers",
+    "description": "Soothing lavender flowers for relaxation and aromatherapy.",
+    "price": "$18.00"
+  },
+  {
+    "id": 14,
+    "image": "/images/hibiscus-flowers.jpg",
+    "title": "Hibiscus Flowers",
+    "description": "Tart hibiscus flowers rich in antioxidants for heart health.",
+    "price": "$14.00"
+  },
+  {
+    "id": 15,
+    "image": "/images/elderberry.jpg",
+    "title": "Elderberry",
+    "description": "Immune-boosting elderberry for cold and flu seasonal support.",
+    "price": "$17.00"
+  },
+  {
+    "id": 16,
+    "image": "/images/goji-berries.jpg",
+    "title": "Goji Berries",
+    "description": "Superfood goji berries for energy and longevity.",
+    "price": "$20.00"
+  },
+  {
+    "id": 17,
+    "image": "/images/cinnamon-bark.jpg",
+    "title": "Cinnamon Bark",
+    "description": "Warm cinnamon bark for blood sugar balance and metabolism.",
+    "price": "$12.00"
+  },
+  {
+    "id": 18,
+    "image": "/images/clove-buds.jpg",
+    "title": "Clove Buds",
+    "description": "Aromatic clove buds for dental health and digestion.",
+    "price": "$15.00"
+  },
+  {
+    "id": 19,
+    "image": "/images/fennel-seeds.jpg",
+    "title": "Fennel Seeds",
+    "description": "Digestive fennel seeds for bloating relief and fresh breath.",
+    "price": "$9.00"
+  },
+  {
+    "id": 20,
+    "image": "/images/cumin-seeds.jpg",
+    "title": "Cumin Seeds",
+    "description": "Earthy cumin seeds for detoxification and nutrient absorption.",
+    "price": "$10.00"
+  },
+  {
+    "id": 21,
+    "image": "/images/chia-seeds.jpg",
+    "title": "Chia Seeds",
+    "description": "Omega-3 rich chia seeds for sustained energy and hydration.",
+    "price": "$16.00"
+  },
+  {
+    "id": 22,
+    "image": "/images/flax-seeds.jpg",
+    "title": "Flax Seeds",
+    "description": "Fiber-packed flax seeds for digestive health and heart support.",
+    "price": "$13.00"
+  },
+  {
+    "id": 23,
+    "image": "/images/nettle-leaves.jpg",
+    "title": "Stinging Nettle Leaves",
+    "description": "Mineral-rich nettle leaves for allergy relief and kidney health.",
+    "price": "$11.00"
+  },
+  {
+    "id": 24,
+    "image": "/images/dandelion-root.jpg",
+    "title": "Dandelion Root",
+    "description": "Liver-supporting dandelion root for detoxification and digestion.",
+    "price": "$12.00"
+  },
+  {
+    "id": 25,
+    "image": "/images/milk-thistle.jpg",
+    "title": "Milk Thistle Seeds",
+    "description": "Liver-protective milk thistle for cleansing and regeneration.",
+    "price": "$18.00"
+  },
+  {
+    "id": 26,
+    "image": "/images/ginkgo-leaves.jpg",
+    "title": "Ginkgo Biloba Leaves",
+    "description": "Brain-boosting ginkgo for memory and mental focus.",
+    "price": "$19.00"
+  },
+  {
+    "id": 27,
+    "image": "/images/ashwagandha-root.jpg",
+    "title": "Ashwagandha Root",
+    "description": "Adaptogenic ashwagandha for stress relief and vitality.",
+    "price": "$22.00"
+  },
+  {
+    "id": 28,
+    "image": "/images/gingko-nuts.jpg",
+    "title": "Ginseng Root",
+    "description": "Energy-enhancing ginseng root for stamina and endurance.",
+    "price": "$28.00"
+  },
+  {
+    "id": 29,
+    "image": "/images/reishi-mushroom.jpg",
+    "title": "Reishi Mushroom",
+    "description": "Immune-modulating reishi for longevity and relaxation.",
+    "price": "$25.00"
+  },
+  {
+    "id": 30,
+    "image": "/images/cordyceps-mushroom.jpg",
+    "title": "Cordyceps Mushroom",
+    "description": "Athletic-performance cordyceps for energy and oxygen utilization.",
+    "price": "$30.00"
+  },
+  {
+    "id": 31,
+    "image": "/images/lion-manes-mushroom.jpg",
+    "title": "Lion's Mane Mushroom",
+    "description": "Neuroprotective lion's mane for cognitive function and nerve health.",
+    "price": "$27.00"
+  },
+  {
+    "id": 32,
+    "image": "/images/hibiscus-tea.jpg",
+    "title": "Hibiscus Tea Blend",
+    "description": "Refreshing hibiscus tea blend for blood pressure support.",
+    "price": "$14.00"
+  },
+  {
+    "id": 33,
+    "image": "/images/green-tea.jpg",
+    "title": "Green Tea Leaves",
+    "description": "Antioxidant-rich green tea for metabolism and cellular health.",
+    "price": "$15.00"
+  },
+  {
+    "id": 34,
+    "image": "/images/white-tea.jpg",
+    "title": "White Tea Leaves",
+    "description": "Delicate white tea for anti-aging and skin radiance.",
+    "price": "$18.00"
+  },
+  {
+    "id": 35,
+    "image": "/images/rooibos-tea.jpg",
+    "title": "Rooibos Tea",
+    "description": "Caffeine-free rooibos for relaxation and mineral absorption.",
+    "price": "$13.00"
+  },
+  {
+    "id": 36,
+    "image": "/images/cacao-nibs.jpg",
+    "title": "Raw Cacao Nibs",
+    "description": "Pure cacao nibs for mood enhancement and magnesium boost.",
+    "price": "$19.00"
+  },
+  {
+    "id": 37,
+    "image": "/images/spirulina.jpg",
+    "title": "Spirulina Powder",
+    "description": "Nutrient-dense spirulina for protein and detoxification.",
+    "price": "$24.00"
+  },
+  {
+    "id": 38,
+    "image": "/images/chlorella.jpg",
+    "title": "Chlorella Tablets",
+    "description": "Heavy metal detox chlorella for cellular cleansing.",
+    "price": "$23.00"
+  },
+  {
+    "id": 39,
+    "image": "/images/maca-root.jpg",
+    "title": "Maca Root Powder",
+    "description": "Hormone-balancing maca for energy and reproductive health.",
+    "price": "$21.00"
+  },
+  {
+    "id": 40,
+    "image": "/images/moringa-leaves.jpg",
+    "title": "Moringa Leaves",
+    "description": "Superfood moringa leaves for complete nutrition and vitality.",
+    "price": "$17.00"
+  }
+]

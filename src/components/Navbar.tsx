@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { FaInstagram, FaTiktok } from "react-icons/fa";
+import { FaInstagram, FaTiktok, FaYoutube } from "react-icons/fa";
 
 export default function Navbar() {
   const [active, setActive] = useState("home");
@@ -28,17 +28,14 @@ export default function Navbar() {
         }
         setActive(current);
       } else {
-        // Standalone page active state
         const path = location.pathname.split("/")[1];
         setActive(path || "home");
       }
     };
 
     // --- 2. CROSS-PAGE SCROLL HANDLER ---
-    // If we just landed on "/" and there is a hash (e.g., #faq)
     if (location.pathname === "/" && window.location.hash) {
       const targetId = window.location.hash.replace("#", "");
-      // Wait a split second for the Home component to mount fully
       setTimeout(() => {
         const el = document.getElementById(targetId);
         if (el) {
@@ -51,21 +48,17 @@ export default function Navbar() {
     handleScroll(); 
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [location.pathname, location.hash]); // Added hash to dependencies
+  }, [location.pathname, location.hash]);
 
   // --- 3. NAVIGATION LOGIC ---
   const handleNav = (target: string, isPage: boolean) => {
     if (isPage) {
-      // Direct page navigation
       navigate(`/${target === "home" ? "" : target}`);
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
-      // Section navigation
       if (location.pathname !== "/") {
-        // If on another page, navigate to home with the hash
         navigate(`/#${target}`);
       } else {
-        // If already on home, just scroll
         document.getElementById(target)?.scrollIntoView({ behavior: "smooth" });
       }
     }
@@ -127,29 +120,56 @@ export default function Navbar() {
           <div className="hidden lg:flex gap-4 text-gray-500 border-r border-white/10 pr-6">
             <a href="https://www.instagram.com/hyssop_herbs_and_wellness" target="_blank" rel="noreferrer" className="hover:text-green-400 transition-colors cursor-pointer"><FaInstagram /></a>
             <a href="https://www.tiktok.com/@addissinanaturalbeauty" target="_blank" rel="noreferrer" className="hover:text-green-400 transition-colors cursor-pointer"><FaTiktok /></a>
+            {/* Added YouTube Link */}
+            <a href="https://www.youtube.com/@addissinanatural" target="_blank" rel="noreferrer" className="hover:text-green-400 transition-colors cursor-pointer"><FaYoutube /></a>
           </div>
           
-          <button 
-            onClick={() => handleNav("shop", true)}
-            className="px-5 py-2 bg-green-500 hover:bg-green-600 text-[#0b1f1a] text-[10px] font-black uppercase tracking-widest rounded-full transition-all active:scale-95 shadow-lg shadow-green-500/20 cursor-pointer"
-          >
-            Shop Now
-          </button>
+          {/* --- THE AMAZING GLASS SHOP BUTTON --- */}
+          <div className="relative inline-block group cursor-pointer">
+            <button 
+              onClick={() => handleNav("shop", true)}
+              className="relative px-6 py-2.5 bg-transparent border-none text-white font-black uppercase tracking-widest text-[10px] cursor-pointer z-10 transition-transform active:scale-95"
+            >
+              Shop Now
+              
+              {/* 1. Base Layer (Inset Shadow & Glow) */}
+              <div className="absolute inset-0 -z-10 rounded-full border border-white/10 bg-green-500/20 shadow-[inset_0_0_10px_rgba(74,222,128,0.4)] transition-all duration-300 group-hover:bg-green-500/40" />
+              
+              {/* 2. Border Mask Layer */}
+              <div className="absolute inset-0 -z-10 rounded-full p-[1px]" 
+                style={{
+                  background: 'linear-gradient(180deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 100%)',
+                  WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                  WebkitMaskComposite: 'xor'
+                }} 
+              />
+
+              {/* 3. Interactive Shimmer */}
+              <div className="absolute inset-0 w-full h-full rounded-full overflow-hidden pointer-events-none">
+                 <div className="absolute inset-0 w-1/2 h-full bg-white/10 -skew-x-45 -translate-x-full group-hover:animate-shimmer" />
+              </div>
+            </button>
+          </div>
         </div>
       </nav>
       
-      {/* Visual Line Progress */}
       <div className={`max-w-7xl mx-auto h-[1px] mt-2 overflow-hidden px-10 transition-opacity duration-700 ${isScrolled ? "opacity-20" : "opacity-0"}`}>
-        <div className="h-full bg-gradient-to-r from-transparent via-green-400 to-transparent animate-shimmer" style={{ width: '100%' }} />
+        <div className="h-full bg-gradient-to-r from-transparent via-green-400 to-transparent animate-shimmer-line" style={{ width: '100%' }} />
       </div>
 
       <style>{`
         @keyframes shimmer {
+          100% { transform: translateX(200%); }
+        }
+        @keyframes shimmer-line {
           0% { transform: translateX(-100%); }
           100% { transform: translateX(100%); }
         }
         .animate-shimmer {
-          animation: shimmer 3s infinite;
+          animation: shimmer 2.5s infinite;
+        }
+        .animate-shimmer-line {
+          animation: shimmer-line 3s infinite;
         }
       `}</style>
     </div>

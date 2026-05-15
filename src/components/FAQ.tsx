@@ -20,6 +20,26 @@ export default function FAQ() {
     {
       q: "Are these safe to use with medication?",
       a: "Nature is powerful. While our herbs are pure, they are potent. We strongly advise a consultation with your healthcare provider if you are on prescription protocols."
+    },
+    {
+      q: "How should I store my herbs to keep them fresh?",
+      a: "Keep your botanicals in a cool, dark sanctuary. Sunlight and moisture are the enemies of potency. Our light-blocking bags are designed for this, but airtight glass jars in a dark cupboard are ideal."
+    },
+    {
+      q: "Can I steep the same leaves multiple times?",
+      a: "Many of our whole-leaf herbs can be infused 2-3 times. Each steep reveals different layers of the plant's profile. Continue until the color and aroma begin to fade."
+    },
+    {
+      q: "Are your products third-party lab tested?",
+      a: "Integrity is our foundation. Every batch is tested for microbial purity and heavy metals to ensure that what you put into your body is as clean as nature intended."
+    },
+    {
+      q: "How long until I feel the benefits?",
+      a: "Herbal medicine is a journey, not a quick fix. While some feel immediate clarity, most botanical protocols take 2-4 weeks of consistent ritual to fully harmonize with your body's systems."
+    },
+    {
+      q: "Do you offer personalized consultations?",
+      a: "Yes. Our certified herbalists provide one-on-one sessions to help you craft a ritual specifically tailored to your body's unique needs and spiritual goals."
     }
   ];
 
@@ -28,28 +48,39 @@ export default function FAQ() {
   return (
     <section id="faq" className="relative py-24 px-6 bg-[#0b1f1a] overflow-hidden">
       
-      {/* --- ALIVE BACKGROUND: CURLY LINES & GLOWING MOTION --- */}
+      {/* --- ALIVE BACKGROUND: CURLY LINES & DIMMED FAQS WATERMARK --- */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         {/* Radiating Gradients */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-emerald-500/10 blur-[160px] rounded-full animate-pulse-slow" />
-        <div className="absolute top-0 right-0 w-96 h-96 bg-amber-500/5 blur-[120px] rounded-full animate-bounce-slow" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-200 h-[
+        800px] bg-emerald-500/10 blur-[160px] rounded-full animate-pulse-slow" />
         
+        {/* THE "FAQS" BACKGROUND WATERMARK (Dimmed 65%) */}
+        <div 
+          className={`absolute right-[5%] top-1/2 -translate-y-1/2 flex flex-col items-center transition-all duration-1000 ease-in-out opacity-30 ${isAnyOpen ? "gap-y-20" : "gap-y-8"}`}
+        >
+          {[
+            { char: 'F', rot: '-rotate-12', delay: '0s' },
+            { char: 'A', rot: 'rotate-6', delay: '0.2s' },
+            { char: 'Q', rot: '-rotate-6', delay: '0.4s' },
+            { char: 'S', rot: 'rotate-12', delay: '0.6s' }
+          ].map((item, idx) => (
+            <span 
+              key={idx} 
+              className={`text-[12rem] md:text-[18rem] font-black leading-[0.8] text-amber-500/40 select-none ${item.rot} transition-all duration-700`}
+              style={{ 
+                textShadow: '0 0 50px rgba(245,158,11,0.3)',
+                animation: `float-letter 8s ease-in-out infinite ${item.delay}`
+              }}
+            >
+              {item.char}
+            </span>
+          ))}
+        </div>
+
         {/* Animated Curly Lines */}
         <svg className="absolute inset-0 w-full h-full opacity-30" viewBox="0 0 1000 1000">
-          <path 
-            d="M-100,200 C150,50 350,450 500,200 C650,50 850,450 1100,200" 
-            stroke="white" strokeWidth="0.5" fill="none" 
-            className="animate-draw-path" 
-          />
-          <path 
-            d="M1100,800 C850,600 650,1000 500,800 C350,600 150,1000 -100,800" 
-            stroke="rgba(34,197,94,0.3)" strokeWidth="1" fill="none" 
-            className="animate-draw-path-reverse" 
-          />
-          <path 
-            d="M500,-100 Q700,500 500,1100" 
-            stroke="rgba(251,191,36,0.1)" strokeWidth="1" fill="none" 
-          />
+          <path d="M-100,200 C150,50 350,450 500,200 C650,50 850,450 1100,200" stroke="white" strokeWidth="0.5" fill="none" className="animate-draw-path" />
+          <path d="M1100,800 C850,600 650,1000 500,800 C350,600 150,1000 -100,800" stroke="rgba(34,197,94,0.3)" strokeWidth="1" fill="none" className="animate-draw-path-reverse" />
         </svg>
 
         {/* Grainy Finish */}
@@ -60,11 +91,11 @@ export default function FAQ() {
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-x-16 items-center">
           
-          {/* --- LEFT SIDE: COMPACT QUESTIONS (75%) --- */}
-          <div className="lg:col-span-9">
+          {/* --- LEFT SIDE: COMPACT QUESTIONS (Now spans more width) --- */}
+          <div className="lg:col-span-10">
             <header className="mb-10">
               <div className="flex items-center gap-3 mb-2">
-                <div className="h-[2px] w-8 bg-amber-500" />
+                <div className="h-0.5 w-8 bg-amber-500" />
                 <span className="text-[10px] tracking-[0.5em] uppercase text-amber-500 font-black">Botanical Inquiries</span>
               </div>
               <h3 className="text-5xl md:text-7xl font-serif text-white leading-tight">
@@ -76,7 +107,7 @@ export default function FAQ() {
               {faqs.map((faq, i) => (
                 <div 
                   key={i} 
-                  className={`transition-all duration-500 border-b border-white/5 ${openIndex === i ? "bg-white/[0.03] backdrop-blur-sm" : ""}`}
+                  className={`transition-all duration-500 border-b border-white/5 ${openIndex === i ? "bg-white/3 backdrop-blur-sm" : ""}`}
                 >
                   <button 
                     onClick={() => setOpenIndex(openIndex === i ? null : i)}
@@ -90,37 +121,12 @@ export default function FAQ() {
                     </div>
                   </button>
                   
-                  <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openIndex === i ? "max-h-[250px] opacity-100" : "max-h-0 opacity-0"}`}>
-                    <p className="px-4 pb-8 text-gray-400 leading-relaxed text-base font-light max-w-2xl italic">
+                  <div className={`overflow-hidden transition-all duration-700 ease-in-out ${openIndex === i ? "max-h-62.5 opacity-100" : "max-h-0 opacity-0"}`}>
+                    <p className="px-4 pb-8 text-gray-400 leading-relaxed text-base font-light max-w-3xl italic">
                       {faq.a}
                     </p>
                   </div>
                 </div>
-              ))}
-            </div>
-          </div>
-
-          {/* --- RIGHT SIDE: THE FAQs STACK (25%) --- */}
-          <div className="lg:col-span-3 flex justify-center pt-16 lg:pt-0">
-            <div 
-              className={`flex flex-col items-center transition-all duration-1000 ease-in-out ${isAnyOpen ? "gap-y-12" : "gap-y-4"}`}
-            >
-              {[
-                { char: 'F', rot: '-rotate-12', delay: '0s' },
-                { char: 'A', rot: 'rotate-6', delay: '0.2s' },
-                { char: 'Q', rot: '-rotate-6', delay: '0.4s' },
-                { char: 'S', rot: 'rotate-12', delay: '0.6s' }
-              ].map((item, idx) => (
-                <span 
-                  key={idx} 
-                  className={`text-[9rem] md:text-[12rem] font-black leading-[0.8] text-amber-500/90 select-none ${item.rot} transition-all duration-700`}
-                  style={{ 
-                    textShadow: '0 0 30px rgba(245,158,11,0.5)',
-                    animation: `float-letter 6s ease-in-out infinite ${item.delay}`
-                  }}
-                >
-                  {item.char}
-                </span>
               ))}
             </div>
           </div>
@@ -131,7 +137,7 @@ export default function FAQ() {
       <style>{`
         @keyframes float-letter {
           0%, 100% { transform: translateY(0) scale(1); filter: brightness(1); }
-          50% { transform: translateY(-15px) scale(1.05); filter: brightness(1.2); }
+          50% { transform: translateY(-25px) scale(1.02); filter: brightness(1.2); }
         }
         @keyframes pulse-slow {
           0%, 100% { opacity: 0.1; transform: translate(-50%, -50%) scale(1); }
