@@ -19,13 +19,10 @@ export default function ContactPage() {
       </div>
 
       {/* --- MAIN CONTENT ---
-          pt: on mobile the navbar is ~72px tall + 16px top offset when scrolled = ~88px.
-          We use pt-28 (112px) on mobile so there's always clear air beneath the navbar,
-          and pt-32 (128px) on md+ which matches the original desktop spacing.
-          The -translate-y-[13%] is removed on mobile (it only applies lg+) because
-          on small screens it pulled the heading behind the navbar.
+          pt-20: Reduced from pt-28 for mobile (approx 30% reduction) to lift content closer to Navbar.
+          md:pt-32: Keeps the established professional spacing for desktop.
       */}
-      <main className="relative z-10 flex-grow flex items-center pt-28 md:pt-32 pb-12 px-6">
+      <main className="relative z-10 flex-grow flex items-center pt-20 md:pt-32 pb-12 px-6">
         <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-x-12 gap-y-16 items-center lg:-translate-y-[13%]">
 
           {/* --- LEFT SIDE: THE INFO --- */}
