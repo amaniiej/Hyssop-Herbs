@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import the hook
 
 export default function Hero() {
   const [offset, setOffset] = useState(0);
+  const navigate = useNavigate(); // Initialize the navigate function
 
   useEffect(() => {
     const handleScroll = () => setOffset(window.scrollY);
@@ -37,11 +39,14 @@ export default function Hero() {
               remedies designed to restore your body's natural balance.
             </p>
 
-            {/* ─── UIVERSE INSPIRED BUTTONS ─── */}
+            {/* ─── FIXED BUTTONS USING NAVIGATE ─── */}
             <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start items-center">
               
               {/* SHOP NOW BUTTON (Emerald Theme) */}
-              <a href="/shop" className="relative group cursor-pointer no-underline">
+              <div 
+                onClick={() => navigate('/shop')} 
+                className="relative group cursor-pointer no-underline"
+              >
                 <button className="relative px-10 py-4 bg-transparent border-none text-white font-bold text-sm uppercase tracking-widest cursor-pointer z-10 transition-transform active:scale-95">
                   Shop Now
                   {/* Base Layer */}
@@ -55,10 +60,13 @@ export default function Hero() {
                     }} 
                   />
                 </button>
-              </a>
+              </div>
 
               {/* BOOK CALL BUTTON (Amber Theme) */}
-              <a href="/contact" className="relative group cursor-pointer no-underline">
+              <div 
+                onClick={() => navigate('/contact')} 
+                className="relative group cursor-pointer no-underline"
+              >
                 <button className="relative px-10 py-4 bg-transparent border-none text-white font-bold text-sm uppercase tracking-widest cursor-pointer z-10 transition-transform active:scale-95">
                   Book A Call
                   {/* Base Layer */}
@@ -72,7 +80,7 @@ export default function Hero() {
                     }} 
                   />
                 </button>
-              </a>
+              </div>
 
             </div>
 
