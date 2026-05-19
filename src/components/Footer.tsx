@@ -31,7 +31,7 @@ export default function Footer() {
                <a href="https://www.facebook.com/share/17KVuWgHUN/" target="_blank" className="hover:text-amber-400 transition-colors"><FaFacebook /></a>
                <a href="https://www.instagram.com/hyssop_herbs_and_wellness" target="_blank" className="hover:text-amber-400 transition-colors"><FaInstagram /></a>
                <a href="https://www.youtube.com/@addissinanatural" target="_blank" className="hover:text-amber-400 transition-colors"><FaYoutube /></a>
-               <a href="https://www.tiktok.com/@addissinanaturalbeauty" target="_blank" className="hover:text-amber-400 transition-colors"><FaTiktok /></a>
+               <a href="https://www.tiktok.com/@hyssopherbswellness?_r=1&_t=ZS-96V2clq11LY" target="_blank" className="hover:text-amber-400 transition-colors"><FaTiktok /></a>
             </div>
           </div>
 
