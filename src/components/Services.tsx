@@ -1,10 +1,12 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom"; // Import for Vercel routing fix
 
 export default function Services() {
   const canvasRef  = useRef<HTMLCanvasElement>(null);
   const mouseRef   = useRef({ x: 0.5, y: 0.5 });
   const targetRef  = useRef({ x: 0.5, y: 0.5 });
   const sectionRef = useRef<HTMLDivElement>(null);
+  const navigate   = useNavigate(); // Hook for navigation
 
   const services = [
     { name: "100% Organic Herbs",     accent: "emerald", large: true  },
@@ -107,207 +109,105 @@ export default function Services() {
   }, []);
 
   return (
-    <section
-      id="services"
-      className="relative overflow-hidden flex flex-col justify-center"
-      style={{ background: "#0b1f1a" }}
-    >
-      {/* Seam fades */}
-      <div className="absolute top-0 left-0 right-0 h-36 pointer-events-none z-20"
-        style={{ background: "linear-gradient(to bottom, #0b1f1a 0%, transparent 100%)" }} />
-      <div className="absolute bottom-0 left-0 right-0 h-36 pointer-events-none z-20"
-        style={{ background: "linear-gradient(to top, #0b1f1a 0%, transparent 100%)" }} />
+    <section id="services" className="relative overflow-hidden flex flex-col justify-center" style={{ background: "#0b1f1a" }}>
+      <div className="absolute top-0 left-0 right-0 h-36 pointer-events-none z-20" style={{ background: "linear-gradient(to bottom, #0b1f1a 0%, transparent 100%)" }} />
+      <div className="absolute bottom-0 left-0 right-0 h-36 pointer-events-none z-20" style={{ background: "linear-gradient(to top, #0b1f1a 0%, transparent 100%)" }} />
 
       {/* ─── HERO IMAGE ─── */}
       <div className="relative w-full z-10">
-        <img
-          src="/images/hyssop_shapes.png"
-          className="w-full h-auto block"
-          style={{ filter: "brightness(0.35) saturate(0.65) sepia(0.18)" }}
-          alt="Hyssop botanical shapes"
-        />
-
+        <img src="/images/hyssop_shapes.png" className="w-full h-auto block" style={{ filter: "brightness(0.35) saturate(0.65) sepia(0.18)" }} alt="Hyssop botanical shapes" />
         <div className="absolute inset-0 pointer-events-none">
-          {/* Dark tint with multiply blend — restores the cinematic depth over the image */}
           <div className="absolute inset-0" style={{ background: "rgba(11,31,26,0.35)", mixBlendMode: "multiply" }} />
           <div className="absolute top-0 left-0 right-0 h-1/4" style={{ background: "linear-gradient(to top, transparent, #0b1f1a)" }} />
-          {/* Wide ellipse — only darkens the outer edges, leaves bottom-centre clear */}
           <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse 70% 55% at center, transparent 45%, #0b1f1a 100%)" }} />
-          {/* Tiny bottom edge fade — only last 12%, well clear of the label */}
           <div className="absolute bottom-0 left-0 right-0 h-[12%]" style={{ background: "linear-gradient(to bottom, transparent, #0b1f1a)" }} />
         </div>
       </div>
 
-      {/*
-        Label is 100% OUTSIDE the image div — no overlay, no overflow-hidden,
-        no stacking context can touch it. Pulled up visually with negative margin.
-      */}
+      {/* Sacred Rituals Label - High Brightness */}
       <div className="relative z-30 flex justify-center" style={{ marginTop: "-2.5rem" }}>
         <div className="flex items-center gap-3">
-          <div className="h-px w-10 bg-gradient-to-r from-transparent to-amber-400/80" />
-          <span
-            className="font-black tracking-[0.55em] uppercase"
-            style={{
-              fontSize: "11px",
-              color: "#fde68a",
-              textShadow: "0 0 8px rgba(251,191,36,1), 0 0 20px rgba(251,191,36,0.8), 0 0 45px rgba(251,191,36,0.4)",
-            }}
-          >
+          <div className="h-px w-12 bg-gradient-to-r from-transparent via-amber-400" />
+          <span className="font-black tracking-[0.6em] uppercase" style={{ fontSize: "12px", color: "#fff", textShadow: "0 0 15px rgba(255,255,255,1), 0 0 30px rgba(251,191,36,0.8)" }}>
             Sacred Rituals
           </span>
-          <div className="h-px w-10 bg-gradient-to-l from-transparent to-amber-400/80" />
+          <div className="h-px w-12 bg-gradient-to-l from-transparent via-amber-400" />
         </div>
       </div>
 
-      {/* ─── BODY ─── */}
-      <div ref={sectionRef} className="relative px-4 pt-10 pb-20 flex flex-col justify-center z-10">
-
-        <canvas
-          ref={canvasRef}
-          className="absolute inset-0 w-full h-full pointer-events-none z-0"
-          style={{ mixBlendMode: "screen" }}
-        />
-
-        <div className="absolute inset-0 z-0 pointer-events-none"
-          style={{ background: "radial-gradient(circle at 50% 45%, rgba(34,197,94,0.05) 0%, transparent 65%)" }} />
+      <div ref={sectionRef} className="relative px-4 pt-16 pb-28 flex flex-col justify-center z-10">
+        <canvas ref={canvasRef} className="absolute inset-0 w-full h-full pointer-events-none z-0" style={{ mixBlendMode: "screen" }} />
+        <div className="absolute inset-0 z-0 pointer-events-none" style={{ background: "radial-gradient(circle at 50% 45%, rgba(34,197,94,0.05) 0%, transparent 65%)" }} />
 
         <div className="relative z-10 max-w-screen-xl mx-auto w-full">
-
           {/* Header */}
-          <div className="text-center mb-14">
+          <div className="text-center mb-20">
             <h2 className="text-5xl md:text-7xl font-serif text-white mb-5 leading-tight">
-              Healing{" "}
-              <em className="text-green-400" style={{ fontStyle: "italic" }}>
-                Offerings
-              </em>
+              Healing <em className="text-green-400" style={{ fontStyle: "italic" }}>Offerings</em>
             </h2>
-            <p className="text-gray-400/80 text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed"
-              style={{ fontStyle: "italic" }}>
-              Ancient botanical wisdom meets modern wellness — each offering a pathway
-              toward lasting balance and vitality.
+            <p className="text-gray-400/80 text-sm md:text-base font-light max-w-xl mx-auto italic leading-relaxed">
+              Ancient botanical wisdom meets modern wellness — a pathway toward lasting balance.
             </p>
           </div>
 
-          {/* Pill cloud */}
-          <div className="flex flex-wrap justify-center items-center gap-x-6 md:gap-x-10 gap-y-5 md:gap-y-6 w-full mb-16">
+          {/* Bubble cloud with TaniaDou DNA */}
+          <div className="flex flex-wrap justify-center items-center gap-x-8 md:gap-x-12 gap-y-6 md:gap-y-10 w-full mb-24">
             {services.map((svc, i) => {
               const ac = accentMap[svc.accent];
               return (
-                <div
-                  key={i}
-                  className="group relative cursor-default"
-                  style={{
-                    animation: `pill-float ${11 + (i % 6)}s ease-in-out infinite`,
-                    animationDelay: `${i * 0.35}s`,
-                  }}
-                >
-                  {/* Breathing halo */}
-                  <div
-                    className="absolute inset-0 rounded-full pointer-events-none"
-                    style={{
-                      border: `1px solid ${ac.border}`,
-                      animation: `halo-breathe ${7 + (i % 4)}s ease-in-out infinite`,
-                      animationDelay: `${i * 0.5}s`,
-                      transform: "scale(1.22)",
-                      filter: "blur(1.5px)",
-                    }}
-                  />
-
-                  {/* Pill */}
-                  <div
-                    className="relative flex items-center gap-2.5 rounded-full backdrop-blur-md border transition-all duration-700"
-                    style={{
-                      padding: svc.large ? "12px 28px" : "9px 22px",
-                      background: "rgba(255,255,255,0.028)",
-                      borderColor: ac.border,
-                      boxShadow: `0 0 24px ${ac.glow}, inset 0 1px 0 rgba(255,255,255,0.06)`,
-                    }}
+                <div key={i} className="group relative cursor-default" style={{ animation: `pill-float ${11 + (i % 6)}s ease-in-out infinite`, animationDelay: `${i * 0.35}s` }}>
+                  <div className="absolute inset-0 rounded-full pointer-events-none" style={{ border: `1px solid ${ac.border}`, animation: `halo-breathe ${7 + (i % 4)}s ease-in-out infinite`, animationDelay: `${i * 0.5}s`, transform: "scale(1.22)", filter: "blur(1.5px)" }} />
+                  
+                  {/* Bubble Content with TaniaDou Style Masking & Inset Shadow */}
+                  <div className="relative flex items-center gap-2.5 rounded-full backdrop-blur-xl transition-all duration-700 overflow-hidden shadow-[inset_0_0_12px_rgba(255,255,255,0.05)] border border-white/5"
+                    style={{ padding: svc.large ? "12px 32px" : "10px 24px", background: "rgba(255,255,255,0.03)" }}
                   >
-                    <span
-                      className="shrink-0 rounded-full"
-                      style={{
-                        width: svc.large ? "6px" : "5px",
-                        height: svc.large ? "6px" : "5px",
-                        background: ac.dot,
-                        boxShadow: `0 0 6px ${ac.dot}`,
-                        opacity: 0.85,
-                      }}
+                    {/* The TaniaDou Masked Border effect applied to bubbles */}
+                    <div className="absolute inset-0 p-[1px] opacity-20 group-hover:opacity-100 transition-opacity" 
+                         style={{
+                           background: `linear-gradient(180deg, ${ac.dot} 0%, transparent 100%)`,
+                           WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                           WebkitMaskComposite: 'xor'
+                         }} 
                     />
-                    <span
-                      className="font-serif text-white/85 group-hover:text-white whitespace-nowrap tracking-wide transition-colors duration-500"
-                      style={{ fontSize: svc.large ? "17px" : "14px" }}
-                    >
+                    
+                    <span className="shrink-0 rounded-full" style={{ width: "5px", height: "5px", background: ac.dot, boxShadow: `0 0 8px ${ac.dot}` }} />
+                    <span className="font-serif text-white/90 group-hover:text-white whitespace-nowrap tracking-wide transition-colors duration-500" style={{ fontSize: svc.large ? "18px" : "15px" }}>
                       {svc.name}
                     </span>
                   </div>
-
-                  {/* Hover bloom */}
-                  <div
-                    className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none -z-10"
-                    style={{
-                      background: ac.glow,
-                      filter: "blur(12px)",
-                      transform: "scale(1.5)",
-                    }}
-                  />
                 </div>
               );
             })}
           </div>
 
-          {/* Divider */}
-          <div className="flex items-center justify-center gap-5 mb-10">
-            <div className="h-px flex-1 max-w-[120px] bg-gradient-to-r from-transparent to-white/10" />
-            <div className="w-1 h-1 rounded-full bg-green-400/40" />
-            <div className="w-1.5 h-1.5 rounded-full bg-green-400/60" />
-            <div className="w-1 h-1 rounded-full bg-green-400/40" />
-            <div className="h-px flex-1 max-w-[120px] bg-gradient-to-l from-transparent to-white/10" />
-          </div>
-
-          {/* CTA */}
-          <div className="flex flex-col items-center gap-3">
-            <p className="text-gray-500/70 text-xs tracking-[0.25em] uppercase font-medium">
-              Ready to begin your journey?
-            </p>
-            <a href="http://localhost:5173/contact" className="group relative inline-flex items-center gap-3 no-underline">
-              <span
-                className="relative flex items-center gap-3 px-10 py-4 rounded-full text-sm font-bold tracking-[0.22em] uppercase text-amber-200/90 transition-all duration-700 group-hover:text-amber-100"
-                style={{
-                  background: "rgba(251,191,36,0.07)",
-                  border: "1px solid rgba(251,191,36,0.22)",
-                  boxShadow: "0 0 0 0 rgba(251,191,36,0)",
-                  transition: "box-shadow 0.7s ease, background 0.7s ease",
-                }}
-                onMouseEnter={e => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 0 32px rgba(251,191,36,0.14)";
-                  (e.currentTarget as HTMLElement).style.background = "rgba(251,191,36,0.12)";
-                }}
-                onMouseLeave={e => {
-                  (e.currentTarget as HTMLElement).style.boxShadow = "0 0 0 0 rgba(251,191,36,0)";
-                  (e.currentTarget as HTMLElement).style.background = "rgba(251,191,36,0.07)";
-                }}
-              >
-                Book a Consultation
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none"
-                  className="transition-transform duration-500 group-hover:translate-x-1">
-                  <path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </span>
-            </a>
+          {/* THE BIG BUTTON: TaniaDou Style Consultation CTA */}
+          <div className="flex flex-col items-center gap-6">
+            <p className="text-gray-500/70 text-[10px] tracking-[0.4em] uppercase font-black">Personalized Healing Guidance</p>
+            
+            <div onClick={() => navigate("/contact")} className="relative group cursor-pointer">
+              <button className="relative px-14 py-5 bg-transparent border-none text-white font-black uppercase tracking-[0.4em] text-[11px] cursor-pointer z-10 transition-transform active:scale-95">
+                Book a Consultation Call
+                {/* Base Layer */}
+                <div className="absolute inset-0 -z-10 rounded-full border border-white/10 bg-amber-500/10 shadow-[inset_0_0_20px_rgba(251,191,36,0.3)] transition-all duration-300 group-hover:bg-amber-500/20 group-hover:shadow-[0_0_35px_rgba(251,191,36,0.25)]" />
+                {/* TaniaDou Border DNA */}
+                <div className="absolute inset-0 -z-10 rounded-full p-[1px]" 
+                  style={{
+                    background: 'linear-gradient(180deg, rgba(251,191,36,0.5) 0%, rgba(251,191,36,0) 100%)',
+                    WebkitMask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                    WebkitMaskComposite: 'xor'
+                  }} 
+                />
+              </button>
+            </div>
           </div>
 
         </div>
       </div>
 
       <style>{`
-        @keyframes pill-float {
-          0%, 100% { transform: translateY(0px);  }
-          50%       { transform: translateY(-8px); }
-        }
-        @keyframes halo-breathe {
-          0%, 100% { opacity: 0.55; transform: scale(1.22); }
-          50%       { opacity: 0;   transform: scale(1.60); }
-        }
+        @keyframes pill-float { 0%, 100% { transform: translateY(0px); } 50% { transform: translateY(-10px); } }
+        @keyframes halo-breathe { 0%, 100% { opacity: 0.5; transform: scale(1.2); } 50% { opacity: 0; transform: scale(1.5); } }
       `}</style>
     </section>
   );
