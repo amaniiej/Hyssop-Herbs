@@ -239,7 +239,7 @@ export default function Navbar() {
           <div className="flex items-center gap-5 text-gray-500">
             <a href="https://www.instagram.com/hyssop_herbs_and_wellness" target="_blank" rel="noreferrer"
               className="hover:text-green-400 transition-colors cursor-pointer text-lg"><FaInstagram /></a>
-            <a href="https://www.tiktok.com/@addissinanaturalbeauty" target="_blank" rel="noreferrer"
+            <a href="https://www.tiktok.com/@hyssopherbswellness?_r=1&_t=ZS-96V2clq11LY" target="_blank" rel="noreferrer"
               className="hover:text-green-400 transition-colors cursor-pointer text-lg"><FaTiktok /></a>
             <a href="https://www.youtube.com/@addissinanatural" target="_blank" rel="noreferrer"
               className="hover:text-green-400 transition-colors cursor-pointer text-lg"><FaYoutube /></a>
