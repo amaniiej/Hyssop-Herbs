@@ -68,8 +68,7 @@ export default function Products() {
     },
   ];
 
-  // Modal rendered via portal — completely outside the section's DOM tree,
-  // so no parent transform/filter/blur can capture its fixed positioning.
+  // Modal rendered via portal
   const modal = selectedProduct ? createPortal(
     <div
       className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/85 backdrop-blur-xl animate-fadeIn px-4"
@@ -83,7 +82,7 @@ export default function Products() {
       >
         <button
           onClick={() => setSelectedProduct(null)}
-          className="absolute top-6 right-6 z-30 bg-white/5 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center text-white/50 hover:text-white border border-white/10 transition-all cursor-pointer"
+          className="absolute top-6 right-6 z-30 bg-white/5 backdrop-blur-md w-10 h-10 rounded-full flex items-center justify-center text-white/40 hover:text-white border border-white/10 transition-all cursor-pointer"
         >
           ✕
         </button>
@@ -105,7 +104,11 @@ export default function Products() {
           </div>
 
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="flex-1 py-4 bg-green-600 text-white font-black uppercase tracking-widest text-[10px] rounded-2xl hover:bg-green-500 transition-all cursor-pointer shadow-lg">
+            {/* FIXED: Added navigate handler to the button */}
+            <button 
+              onClick={() => navigate("/shop")}
+              className="flex-1 py-4 bg-green-600 text-white font-black uppercase tracking-widest text-[10px] rounded-2xl hover:bg-green-500 transition-all cursor-pointer shadow-lg"
+            >
               Add to Sanctuary
             </button>
             <button
@@ -150,7 +153,7 @@ export default function Products() {
 
         <div className="relative z-10 max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-[10px] tracking-[0.6em] uppercase text-amber-500 font-black block mb-4">Botanical Apothecary</span>
+            <span className="text-[10px] tracking-[0.6em] uppercase text-amber-400 font-black block mb-4">Botanical Apothecary</span>
             <h2 className="text-4xl md:text-6xl font-serif text-white">
               Nature's <span className="text-green-400 italic font-light">Pharmacy</span>
             </h2>
@@ -221,8 +224,6 @@ export default function Products() {
         </div>
       </section>
 
-      {/* Portal-rendered modal — lives directly on document.body,
-          completely immune to any parent transform/filter/backdrop-blur */}
       {modal}
 
       <style>{`
