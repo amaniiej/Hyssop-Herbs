@@ -9,35 +9,37 @@ export default function ContactPage() {
 
       {/* --- DYNAMIC GLOWING BACKGROUND --- */}
       <div className="fixed inset-0 z-0 pointer-events-none">
-        {/* Multidimensional Color grading */}
         <div className="absolute top-[5%] left-[-5%] w-[600px] h-[600px] bg-emerald-600/20 blur-[130px] rounded-full animate-pulse" />
         <div className="absolute bottom-[10%] right-[-5%] w-[500px] h-[500px] bg-green-500/10 blur-[100px] rounded-full" />
         <div className="absolute top-[40%] right-[15%] w-[400px] h-[400px] bg-amber-500/10 blur-[110px] rounded-full animate-bounce-slow" />
-
-        {/* Animated Curly Flows */}
         <svg className="absolute inset-0 w-full h-full opacity-20" viewBox="0 0 1000 1000">
           <path d="M-100,500 C150,300 350,700 500,500 C650,300 850,700 1100,500" stroke="white" strokeWidth="0.5" fill="none" className="animate-draw" />
           <path d="M500,-100 C300,150 700,350 500,500 C300,650 700,850 500,1100" stroke="rgba(34,197,94,0.3)" strokeWidth="0.5" fill="none" />
         </svg>
       </div>
 
-      {/* --- MAIN CONTENT --- */}
-      <main className="relative z-10 flex-grow flex items-center pt-32 pb-12 px-6">
-        {/* 🔥 Shifting content up by 13% using translate-y */}
-        <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-x-12 gap-y-16 items-center transform -translate-y-[13%]">
-          
+      {/* --- MAIN CONTENT ---
+          pt: on mobile the navbar is ~72px tall + 16px top offset when scrolled = ~88px.
+          We use pt-28 (112px) on mobile so there's always clear air beneath the navbar,
+          and pt-32 (128px) on md+ which matches the original desktop spacing.
+          The -translate-y-[13%] is removed on mobile (it only applies lg+) because
+          on small screens it pulled the heading behind the navbar.
+      */}
+      <main className="relative z-10 flex-grow flex items-center pt-28 md:pt-32 pb-12 px-6">
+        <div className="max-w-6xl mx-auto w-full grid lg:grid-cols-2 gap-x-12 gap-y-16 items-center lg:-translate-y-[13%]">
+
           {/* --- LEFT SIDE: THE INFO --- */}
-          <div className="space-y-10 lg:pr-12">
+          <div className="space-y-8 md:space-y-10 lg:pr-12">
             <header>
-              <h2 className="text-6xl md:text-8xl font-serif leading-tight text-white mb-6">
+              <h2 className="text-5xl md:text-6xl lg:text-8xl font-serif leading-tight text-white mb-4 md:mb-6">
                 Contact <span className="italic text-green-400">Us</span>
               </h2>
-              <p className="text-gray-300 text-lg font-light max-w-md leading-relaxed border-l-2 border-green-500/30 pl-6">
+              <p className="text-gray-300 text-base md:text-lg font-light max-w-md leading-relaxed border-l-2 border-green-500/30 pl-6">
                 Connect with our global branches for expert guidance on your healing journey.
               </p>
             </header>
 
-            <div className="space-y-10 max-w-sm">
+            <div className="space-y-8 md:space-y-10 max-w-sm">
               {/* Branch: Ethiopia */}
               <div className="group">
                 <div className="flex items-center gap-3 text-emerald-400 mb-2">
@@ -69,7 +71,7 @@ export default function ContactPage() {
                 <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center bg-white/5 group-hover:bg-green-500 group-hover:border-green-500 transition-all">
                   <FaEnvelope className="text-xs text-green-300 group-hover:text-white" />
                 </div>
-                <span className="text-sm font-bold tracking-tight text-gray-200 group-hover:text-white border-b border-white/10 pb-1">
+                <span className="text-sm font-bold tracking-tight text-gray-200 group-hover:text-white border-b border-white/10 pb-1 break-all">
                   Hyssopherbswelness@gmail.com
                 </span>
               </a>
@@ -82,30 +84,46 @@ export default function ContactPage() {
               <div className="grid md:grid-cols-2 gap-10">
                 {/* Name */}
                 <div className="relative group">
-                  <input type="text" required className="peer w-full bg-transparent border-b border-white/20 py-3 text-sm focus:outline-none transition-all placeholder-transparent" id="name" />
-                  <label htmlFor="name" className="absolute left-0 top-3 text-[11px] font-bold tracking-[0.4em] text-gray-200 uppercase transition-all peer-focus:-top-6 peer-focus:text-green-400 peer-valid:-top-6 peer-valid:text-green-400">FullName</label>
+                  <input type="text" required
+                    className="peer w-full bg-transparent border-b border-white/20 py-3 text-sm focus:outline-none transition-all placeholder-transparent"
+                    id="name" />
+                  <label htmlFor="name"
+                    className="absolute left-0 top-3 text-[11px] font-bold tracking-[0.4em] text-gray-200 uppercase transition-all peer-focus:-top-6 peer-focus:text-green-400 peer-valid:-top-6 peer-valid:text-green-400">
+                    Full Name
+                  </label>
                   <div className="absolute bottom-0 left-0 h-[2px] bg-green-500 w-0 peer-focus:w-full transition-all duration-700" />
                 </div>
-                
+
                 {/* Email */}
                 <div className="relative group">
-                  <input type="email" required className="peer w-full bg-transparent border-b border-white/20 py-3 text-sm focus:outline-none transition-all placeholder-transparent" id="email" />
-                  <label htmlFor="email" className="absolute left-0 top-3 text-[11px] font-bold tracking-[0.4em] text-gray-200 uppercase transition-all peer-focus:-top-6 peer-focus:text-green-400 peer-valid:-top-6 peer-valid:text-green-400">Email</label>
+                  <input type="email" required
+                    className="peer w-full bg-transparent border-b border-white/20 py-3 text-sm focus:outline-none transition-all placeholder-transparent"
+                    id="email" />
+                  <label htmlFor="email"
+                    className="absolute left-0 top-3 text-[11px] font-bold tracking-[0.4em] text-gray-200 uppercase transition-all peer-focus:-top-6 peer-focus:text-green-400 peer-valid:-top-6 peer-valid:text-green-400">
+                    Email
+                  </label>
                   <div className="absolute bottom-0 left-0 h-[2px] bg-green-500 w-0 peer-focus:w-full transition-all duration-700" />
                 </div>
               </div>
 
               {/* Message */}
               <div className="relative group pt-4">
-                <textarea rows={4} required className="peer w-full bg-transparent border-b border-white/20 py-3 text-sm focus:outline-none transition-all placeholder-transparent resize-none" id="msg" />
-                <label htmlFor="msg" className="absolute left-0 top-3 text-[11px] font-bold tracking-[0.4em] text-gray-200 uppercase transition-all peer-focus:-top-6 peer-focus:text-green-400 peer-valid:-top-6 peer-valid:text-green-400">Your Message</label>
+                <textarea rows={4} required
+                  className="peer w-full bg-transparent border-b border-white/20 py-3 text-sm focus:outline-none transition-all placeholder-transparent resize-none"
+                  id="msg" />
+                <label htmlFor="msg"
+                  className="absolute left-0 top-3 text-[11px] font-bold tracking-[0.4em] text-gray-200 uppercase transition-all peer-focus:-top-6 peer-focus:text-green-400 peer-valid:-top-6 peer-valid:text-green-400">
+                  Your Message
+                </label>
                 <div className="absolute bottom-0 left-0 h-[2px] bg-green-500 w-0 peer-focus:w-full transition-all duration-700" />
               </div>
 
               <div className="pt-6">
-                <button type="submit" className="group flex items-center gap-10 bg-transparent text-white uppercase tracking-[0.5em] text-[11px] font-black hover:text-green-400 transition-all cursor-pointer">
+                <button type="submit"
+                  className="group flex items-center gap-6 md:gap-10 bg-transparent text-white uppercase tracking-[0.5em] text-[11px] font-black hover:text-green-400 transition-all cursor-pointer">
                   <span>Send Ritual Inquiry</span>
-                  <div className="w-14 h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-green-600 group-hover:border-green-600 group-hover:text-white transition-all shadow-[0_0_30px_rgba(34,197,94,0.15)]">
+                  <div className="w-12 h-12 md:w-14 md:h-14 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-green-600 group-hover:border-green-600 group-hover:text-white transition-all shadow-[0_0_30px_rgba(34,197,94,0.15)]">
                     <FaPaperPlane className="text-xs" />
                   </div>
                 </button>
@@ -119,15 +137,15 @@ export default function ContactPage() {
       <Footer />
 
       <style>{`
-        @keyframes draw { 
-          0% { stroke-dashoffset: 1000; stroke-dasharray: 1000; opacity: 0; } 
-          50% { opacity: 0.5; }
-          100% { stroke-dashoffset: 0; stroke-dasharray: 1000; opacity: 0.15; } 
+        @keyframes draw {
+          0%   { stroke-dashoffset: 1000; stroke-dasharray: 1000; opacity: 0; }
+          50%  { opacity: 0.5; }
+          100% { stroke-dashoffset: 0; stroke-dasharray: 1000; opacity: 0.15; }
         }
         .animate-draw { animation: draw 12s linear infinite; }
         @keyframes bounce-slow {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
+          50%       { transform: translateY(-20px); }
         }
         .animate-bounce-slow { animation: bounce-slow 8s ease-in-out infinite; }
       `}</style>
